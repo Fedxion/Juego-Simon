@@ -35,6 +35,9 @@ body {
   background-color: red;
 }
 
+.red:active{
+  background-color: rgb(243, 73, 73);
+}
 .green {
   background-color: green;
 }
