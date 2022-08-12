@@ -14,6 +14,7 @@ $(document).keydown(function (tecla) {
          }
         });
 
+        
 
 
   function siguienteSecuencia(){
@@ -23,6 +24,17 @@ $(document).keydown(function (tecla) {
     let numeroRandom = Math.floor(Math.random() * 4);
     let colorElegidoRandom = coloresBotones[numeroRandom];
     patronDeJuego.push(colorElegidoRandom);
-   
+    animacion(colorElegidoRandom);
+    
 
+}
+
+
+function animacion(colorActual) {
+    $("#" + colorActual ).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#" + colorActual ).addClass("pressed");
+    setTimeout(function() {
+        $("#" + colorActual ).removeClass("pressed");
+        }, 100);
+    
 }
