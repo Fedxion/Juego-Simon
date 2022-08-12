@@ -68,7 +68,7 @@ const pulseGreen = () => {
 const pulseRed = () => {
     console.log('Ejecutó');
     audiored.play();
-    
+
 }
 const pulseYellow = () => {
     console.log('Ejecutó');
@@ -81,10 +81,25 @@ const pulseBlue = () => {
     
 }
 
-green.addEventListener('click', pulseGreen);
-red.addEventListener('click', pulseRed);
-yellow.addEventListener('click', pulseYellow);
-blue.addEventListener('click', pulseBlue);
+green.addEventListener('click',  function(){
+    pulseGreen;
+    patronDeUsuario.push("green");
+    
+
+} );
+red.addEventListener('click',function(){
+    pulseRed;
+    patronDeUsuario.push("red");  
+
+} );
+yellow.addEventListener('click', function(){
+    pulseYellow;
+    patronDeUsuario.push("yellow")
+});
+blue.addEventListener('click', function(){
+    pulseBlue;
+    patronDeUsuario.push("blue");
+});
 
 
 function sonido(nombre){
