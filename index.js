@@ -25,6 +25,7 @@ $(document).keydown(function (tecla) {
     let colorElegidoRandom = coloresBotones[numeroRandom];
     patronDeJuego.push(colorElegidoRandom);
     animacion(colorElegidoRandom);
+    sonido(colorElegidoRandom);
     
 
 }
@@ -36,7 +37,7 @@ function animacion(colorActual) {
     setTimeout(function() {
         $("#" + colorActual ).removeClass("pressed");
         }, 100);
-    
+  
 }
 
 
@@ -61,8 +62,8 @@ $(document).keydown(function (tecla) {
 const pulseGreen = () => {
     console.log('Ejecutó');
     audiogreen.play();
-    
-    
+
+
 }
 const pulseRed = () => {
     console.log('Ejecutó');
@@ -86,4 +87,7 @@ yellow.addEventListener('click', pulseYellow);
 blue.addEventListener('click', pulseBlue);
 
 
-
+function sonido(nombre){
+    let audio = new Audio("sounds/" + nombre + ".mp3");
+    audio.play();
+}
