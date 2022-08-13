@@ -35,6 +35,10 @@ body {
   background-color: red;
 }
 
+.red:active{
+  background-color: rgb(224, 144, 144);
+}
+
 .green {
   background-color: green;
 }
