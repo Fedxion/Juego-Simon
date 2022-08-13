@@ -4,7 +4,6 @@ let coloresBotones = ["red", "blue","green","yellow"];
 let patronDeJuego = [];
 let patronDeUsuario = [];
 
-
 $(document).keydown(function (tecla) {
     if (tecla.keyCode === 65 && started === false ){
             $("#level-title").text("Level " + nivel);
@@ -13,37 +12,32 @@ $(document).keydown(function (tecla) {
          }
         });
 
-        
-
-
-
-
 let green = document.getElementById('green');
 let red = document.getElementById('red');
 let yellow = document.getElementById('yellow');
 let blue = document.getElementById('blue');
 
-const audiogreen = new Audio('sounds/green.mp3');
-const audiored = new Audio('sounds/red.mp3');
-const audioyellow = new Audio('sounds/yellow.mp3');
-const audioblue = new Audio('sounds/blue.mp3');
-const audiowrong = new Audio('sounds/wrong.mp3');
+const audioGreen = new Audio('sounds/green.mp3');
+const audioRed = new Audio('sounds/red.mp3');
+const audioYellow = new Audio('sounds/yellow.mp3');
+const audioBlue = new Audio('sounds/blue.mp3');
+const audioWrong = new Audio('sounds/wrong.mp3');
 
 const pulseGreen = () => {
-    audiogreen.play();
+    audioGreen.play();
 
 
 }
 const pulseRed = () => {
-    audiored.play();
+    audioRed.play();
 
 }
 const pulseYellow = () => {
-    audioyellow.play();
+    audioYellow.play();
     
 }
 const pulseBlue = () => {
-    audioblue.play();
+    audioBlue.play();
     
 }
 
@@ -84,9 +78,6 @@ function siguienteSecuencia(){
     patronDeJuego.push(colorElegidoRandom);
     animacion(colorElegidoRandom);
     sonido(colorElegidoRandom);
-    
-    
-
 }
 
 function animacion(colorActual) {
@@ -95,7 +86,6 @@ function animacion(colorActual) {
     setTimeout(function() {
         $("#" + colorActual ).removeClass("pressed");
         }, 100);
-  
 }
 
 function controlRespuesta(actualNivel){
