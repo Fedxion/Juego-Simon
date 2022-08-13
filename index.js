@@ -10,7 +10,7 @@ $(document).keydown(function (tecla) {
     if (tecla.keyCode === 65 && started === false ){
             $("#level-title").text("Level " + nivel);
             siguienteSecuencia();
-            started = true
+            started = true;
          }
         });
 
@@ -26,6 +26,7 @@ $(document).keydown(function (tecla) {
     patronDeJuego.push(colorElegidoRandom);
     animacion(colorElegidoRandom);
     sonido(colorElegidoRandom);
+    
     
 
 }
@@ -52,57 +53,79 @@ const audioyellow = new Audio('sounds/yellow.mp3');
 const audioblue = new Audio('sounds/blue.mp3');
 const audiowrong = new Audio('sounds/wrong.mp3');
 
-$(document).keydown(function (tecla) {
-    if (tecla.keyCode === 65 && started === false ){
-            $("#level-title").text("Level " + level);
-            started = true
-         }
-});
-
 const pulseGreen = () => {
-    console.log('Ejecutó');
     audiogreen.play();
 
 
 }
 const pulseRed = () => {
-    console.log('Ejecutó');
     audiored.play();
 
 }
 const pulseYellow = () => {
-    console.log('Ejecutó');
     audioyellow.play();
     
 }
 const pulseBlue = () => {
-    console.log('Ejecutó');
     audioblue.play();
     
 }
 
 green.addEventListener('click',  function(){
-    pulseGreen;
+    pulseGreen();
     patronDeUsuario.push("green");
-    
+    controlRespuesta(patronDeUsuario.length-1);
 
 } );
 red.addEventListener('click',function(){
-    pulseRed;
+    pulseRed();
     patronDeUsuario.push("red");  
-
+    controlRespuesta(patronDeUsuario.length-1);
 } );
 yellow.addEventListener('click', function(){
-    pulseYellow;
-    patronDeUsuario.push("yellow")
+    pulseYellow();
+    patronDeUsuario.push("yellow");
+    controlRespuesta(patronDeUsuario.length-1);
 });
 blue.addEventListener('click', function(){
-    pulseBlue;
+    pulseBlue();
     patronDeUsuario.push("blue");
+    controlRespuesta(patronDeUsuario.length-1);
 });
 
 
 function sonido(nombre){
     let audio = new Audio("sounds/" + nombre + ".mp3");
     audio.play();
+}
+
+
+function controlRespuesta(actualNivel){
+
+    if (patronDeJuego[actualNivel] === patronDeUsuario[actualNivel] ) {
+        console.log("Success")
+        if (patronDeUsuario.length === patronDeJuego.length){
+            setTimeout(function(){
+                siguienteSecuencia();
+            }, 1000);
+        }
+    }else{
+        let wrong = new Audio("sounds/wrong.mp3");
+        wrong.play();
+        console.log("wrong")
+        $("#level-title").text('Game Over, Presiona la Tecla A para comenzar de nuevo');
+        $("body").addClass("game-over");
+        setTimeout(function() {
+         $("body").removeClass("game-over");
+        }, 200);
+        empezarDeNuevo();
+
+    }
+
+}
+
+function empezarDeNuevo(){
+    nivel = 0;
+    patronDeJuego = [];
+    started = false;
 }

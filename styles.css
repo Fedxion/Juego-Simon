@@ -26,11 +26,6 @@ body {
   border-radius: 20%;
 }
 
-.game-over {
-  background-color: red;
-  opacity: 0.8;
-}
-
 .red {
   background-color: red;
 }
@@ -59,7 +54,7 @@ body {
 }
 
 .yellow:active{
-  background-color: rgb(252, 255, 80);
+  background-color: rgb(255, 255, 255);
 }
 
 .pressed {
@@ -75,4 +70,9 @@ a{
 
 a:hover{
   color: #FFF
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
 }
