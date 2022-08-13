@@ -17,7 +17,7 @@ $(document).keydown(function (tecla) {
         
 
 
-  function siguienteSecuencia(){
+function siguienteSecuencia(){
     patronDeUsuario = [];
     nivel++;
     $("#level-title").text("Nivel " + nivel)
@@ -27,7 +27,7 @@ $(document).keydown(function (tecla) {
     animacion(colorElegidoRandom);
     sonido(colorElegidoRandom);
     
-
+    
 }
 
 
@@ -37,7 +37,7 @@ function animacion(colorActual) {
     setTimeout(function() {
         $("#" + colorActual ).removeClass("pressed");
         }, 100);
-  
+    
 }
 
 
@@ -60,26 +60,28 @@ $(document).keydown(function (tecla) {
 });
 
 const pulseGreen = () => {
-    console.log('Ejecutó');
+   
     audiogreen.play();
-
-
+    patronDeUsuario.push('green');
+  
 }
 const pulseRed = () => {
-    console.log('Ejecutó');
     audiored.play();
-    
+    patronDeUsuario.push('red');
+   
 }
 const pulseYellow = () => {
-    console.log('Ejecutó');
     audioyellow.play();
+    patronDeUsuario.push('yellow');
     
 }
 const pulseBlue = () => {
-    console.log('Ejecutó');
-    audioblue.play();
     
+    audioblue.play();
+    patronDeUsuario.push('blue');
 }
+
+console.log(patronDeUsuario);
 
 green.addEventListener('click', pulseGreen);
 red.addEventListener('click', pulseRed);
@@ -91,3 +93,5 @@ function sonido(nombre){
     let audio = new Audio("sounds/" + nombre + ".mp3");
     audio.play();
 }
+
+
