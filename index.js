@@ -5,7 +5,6 @@ let patronDeJuego = [];
 let patronDeUsuario = [];
 
 
-
 $(document).keydown(function (tecla) {
     if (tecla.keyCode === 65 && started === false ){
             $("#level-title").text("Level " + nivel);
@@ -17,29 +16,6 @@ $(document).keydown(function (tecla) {
         
 
 
-  function siguienteSecuencia(){
-    patronDeUsuario = [];
-    nivel++;
-    $("#level-title").text("Nivel " + nivel)
-    let numeroRandom = Math.floor(Math.random() * 4);
-    let colorElegidoRandom = coloresBotones[numeroRandom];
-    patronDeJuego.push(colorElegidoRandom);
-    animacion(colorElegidoRandom);
-    sonido(colorElegidoRandom);
-    
-    
-
-}
-
-
-function animacion(colorActual) {
-    $("#" + colorActual ).fadeIn(100).fadeOut(100).fadeIn(100);
-    $("#" + colorActual ).addClass("pressed");
-    setTimeout(function() {
-        $("#" + colorActual ).removeClass("pressed");
-        }, 100);
-  
-}
 
 
 let green = document.getElementById('green');
@@ -99,6 +75,28 @@ function sonido(nombre){
     audio.play();
 }
 
+function siguienteSecuencia(){
+    patronDeUsuario = [];
+    nivel++;
+    $("#level-title").text("Nivel " + nivel)
+    let numeroRandom = Math.floor(Math.random() * 4);
+    let colorElegidoRandom = coloresBotones[numeroRandom];
+    patronDeJuego.push(colorElegidoRandom);
+    animacion(colorElegidoRandom);
+    sonido(colorElegidoRandom);
+    
+    
+
+}
+
+function animacion(colorActual) {
+    $("#" + colorActual ).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#" + colorActual ).addClass("pressed");
+    setTimeout(function() {
+        $("#" + colorActual ).removeClass("pressed");
+        }, 100);
+  
+}
 
 function controlRespuesta(actualNivel){
 
