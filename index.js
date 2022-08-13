@@ -10,7 +10,7 @@ $(document).keydown(function (tecla) {
     if (tecla.keyCode === 65 && started === false ){
             $("#level-title").text("Level " + nivel);
             siguienteSecuencia();
-            started = true
+            started = true;
          }
         });
 
@@ -26,8 +26,6 @@ function siguienteSecuencia(){
     patronDeJuego.push(colorElegidoRandom);
     animacion(colorElegidoRandom);
     sonido(colorElegidoRandom);
-    
-    
 }
 
 
@@ -52,23 +50,16 @@ const audioyellow = new Audio('sounds/yellow.mp3');
 const audioblue = new Audio('sounds/blue.mp3');
 const audiowrong = new Audio('sounds/wrong.mp3');
 
-$(document).keydown(function (tecla) {
-    if (tecla.keyCode === 65 && started === false ){
-            $("#level-title").text("Level " + level);
-            started = true
-         }
-});
-
 const pulseGreen = () => {
-   
-    audiogreen.play();
-    patronDeUsuario.push('green');
-  
+audiogreen.play();
+patronDeUsuario.push('green');
 }
+
 const pulseRed = () => {
     audiored.play();
     patronDeUsuario.push('red');
    
+
 }
 const pulseYellow = () => {
     audioyellow.play();
@@ -76,10 +67,13 @@ const pulseYellow = () => {
     
 }
 const pulseBlue = () => {
+   audioblue.play();
+
     
     audioblue.play();
     patronDeUsuario.push('blue');
 }
+
 
 console.log(patronDeUsuario);
 
@@ -87,6 +81,27 @@ green.addEventListener('click', pulseGreen);
 red.addEventListener('click', pulseRed);
 yellow.addEventListener('click', pulseYellow);
 blue.addEventListener('click', pulseBlue);
+green.addEventListener('click',  function(){
+    pulseGreen();
+    patronDeUsuario.push("green");
+    controlRespuesta(patronDeUsuario.length-1);
+
+} );
+red.addEventListener('click',function(){
+    pulseRed();
+    patronDeUsuario.push("red");  
+    controlRespuesta(patronDeUsuario.length-1);
+} );
+yellow.addEventListener('click', function(){
+    pulseYellow();
+    patronDeUsuario.push("yellow");
+    controlRespuesta(patronDeUsuario.length-1);
+});
+blue.addEventListener('click', function(){
+    pulseBlue();
+    patronDeUsuario.push("blue");
+    controlRespuesta(patronDeUsuario.length-1);
+});
 
 
 function sonido(nombre){
@@ -95,3 +110,33 @@ function sonido(nombre){
 }
 
 
+
+function controlRespuesta(actualNivel){
+
+    if (patronDeJuego[actualNivel] === patronDeUsuario[actualNivel] ) {
+        console.log("Success")
+        if (patronDeUsuario.length === patronDeJuego.length){
+            setTimeout(function(){
+                siguienteSecuencia();
+            }, 1000);
+        }
+    }else{
+        let wrong = new Audio("sounds/wrong.mp3");
+        wrong.play();
+        console.log("wrong")
+        $("#level-title").text('Game Over, Presiona la Tecla A para comenzar de nuevo');
+        $("body").addClass("game-over");
+        setTimeout(function() {
+         $("body").removeClass("game-over");
+        }, 200);
+        empezarDeNuevo();
+
+    }
+
+}
+
+function empezarDeNuevo(){
+    nivel = 0;
+    patronDeJuego = [];
+    started = false;
+}
