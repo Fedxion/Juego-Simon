@@ -11,7 +11,7 @@ $(document).keydown(function (tecla) {
             started = true;
          }
         });
-        
+
 function siguienteSecuencia(){
     patronDeUsuario = [];
     nivel++;
@@ -21,7 +21,7 @@ function siguienteSecuencia(){
     patronDeJuego.push(colorElegidoRandom);
     animacion(colorElegidoRandom);
     sonido(colorElegidoRandom);
-}
+};
 
 
 function animacion(colorActual) {
@@ -44,23 +44,19 @@ const audioBlue = new Audio('sounds/blue.mp3');
 const audioWrong = new Audio('sounds/wrong.mp3');
 
 const pulseGreen = () => {
-audiogreen.play();
-patronDeUsuario.push('green');
+audioGreen.play();
 }
 
 const pulseRed = () => {
-    audiored.play();
-    patronDeUsuario.push('red');
-   }
+    audioRed.play();
+}
 
 const pulseYellow = () => {
-    audioyellow.play();
-    patronDeUsuario.push('yellow');
+    audioYellow.play();
     
 }
 const pulseBlue = () => {
-    audioblue.play();
-    patronDeUsuario.push('blue');
+    audioBlue.play();
 }
 
 
@@ -70,6 +66,7 @@ green.addEventListener('click', pulseGreen);
 red.addEventListener('click', pulseRed);
 yellow.addEventListener('click', pulseYellow);
 blue.addEventListener('click', pulseBlue);
+
 green.addEventListener('click',  function(){
     pulseGreen();
     patronDeUsuario.push("green");
