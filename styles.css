@@ -54,7 +54,9 @@ body {
 }
 
 .yellow:active{
+  background-color: rgb(251, 253, 115);
   background-color: rgb(255, 255, 255);
+
 }
 
 .pressed {

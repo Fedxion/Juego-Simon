@@ -11,6 +11,26 @@ $(document).keydown(function (tecla) {
             started = true;
          }
         });
+        
+function siguienteSecuencia(){
+    patronDeUsuario = [];
+    nivel++;
+    $("#level-title").text("Nivel " + nivel)
+    let numeroRandom = Math.floor(Math.random() * 4);
+    let colorElegidoRandom = coloresBotones[numeroRandom];
+    patronDeJuego.push(colorElegidoRandom);
+    animacion(colorElegidoRandom);
+    sonido(colorElegidoRandom);
+}
+
+
+function animacion(colorActual) {
+    $("#" + colorActual ).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#" + colorActual ).addClass("pressed");
+    setTimeout(function() {
+        $("#" + colorActual ).removeClass("pressed");
+        }, 100);
+}
 
 let green = document.getElementById('green');
 let red = document.getElementById('red');
@@ -24,23 +44,32 @@ const audioBlue = new Audio('sounds/blue.mp3');
 const audioWrong = new Audio('sounds/wrong.mp3');
 
 const pulseGreen = () => {
-    audioGreen.play();
-
-
+audiogreen.play();
+patronDeUsuario.push('green');
 }
+
 const pulseRed = () => {
-    audioRed.play();
+    audiored.play();
+    patronDeUsuario.push('red');
+   }
 
-}
 const pulseYellow = () => {
-    audioYellow.play();
+    audioyellow.play();
+    patronDeUsuario.push('yellow');
     
 }
 const pulseBlue = () => {
-    audioBlue.play();
-    
+    audioblue.play();
+    patronDeUsuario.push('blue');
 }
 
+
+console.log(patronDeUsuario);
+
+green.addEventListener('click', pulseGreen);
+red.addEventListener('click', pulseRed);
+yellow.addEventListener('click', pulseYellow);
+blue.addEventListener('click', pulseBlue);
 green.addEventListener('click',  function(){
     pulseGreen();
     patronDeUsuario.push("green");
@@ -87,6 +116,7 @@ function animacion(colorActual) {
         $("#" + colorActual ).removeClass("pressed");
         }, 100);
 }
+
 
 function controlRespuesta(actualNivel){
 
